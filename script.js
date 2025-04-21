@@ -1,3 +1,9 @@
+//**************Three.js Basics*************/
+
+//First Basic Project - Rendering a simple 3D box using Three.js
+//Three.js is a JavaScript library that makes it easy to create 3D graphics in the browser. It uses WebGL to render 3D graphics and provides a simple API for creating and manipulating 3D objects.
+//It is a powerful library that allows you to create complex 3D scenes with ease. It is widely used in web development for creating 3D graphics and animations.
+
 // //Import everything from three.js
 // import * as THREE from "three";
 
@@ -39,6 +45,7 @@
 
 // renderer.render(scene, camera);
 
+//Practice
 import * as THREE from "three";
 const canvas = document.querySelector("canvas.webgl");
 
@@ -49,15 +56,21 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 const sizes = {
-  width: 800,
+  width: 700,
   height: 600,
 };
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 scene.add(camera);
 camera.position.z = 3;
-camera.position.x = 0.5;
-camera.position.y = 0.75;
+camera.position.x = 0;
+camera.position.y = 0;
+
+//Transform Objects
+//Transformations are used to change the position, rotation, scale and quaternion of objects in the scene. Three.js provides methods to apply transformations to objects easily.
+
+mesh.position.y = 1;
+
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
