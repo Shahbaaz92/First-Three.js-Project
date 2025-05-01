@@ -37,7 +37,7 @@
 // camera.position.x = 1; //Set the position of the camera
 // camera.position.y = 0.15; //Set the position of the camera
 
-// //Render - A renderer is a component that renders the scene and camera. It takes the scene and camera as input and outputs the rendered image to the screen.
+// //Render - A renderer is a component that renders the scene and camera. It takes the scene and camera as input and outputs the rendered image to the screen. Renderer is always last step.
 // const renderer = new THREE.WebGLRenderer({
 //   canvas: canvas,
 // });
@@ -62,14 +62,68 @@ const sizes = {
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 scene.add(camera);
+camera.position.x = 0.5;
+camera.position.y = 0.5;
 camera.position.z = 3;
-camera.position.x = 0;
-camera.position.y = 0;
 
 //Transform Objects
 //Transformations are used to change the position, rotation, scale and quaternion of objects in the scene. Three.js provides methods to apply transformations to objects easily.
 
-mesh.position.y = 1;
+//Position
+mesh.position.y = 0;
+mesh.position.x = 0;
+mesh.position.z = 0;
+//Generally added before adding the mesh to the scene.
+//Methods
+// mesh.position.set(1, -0.5, -4);
+console.log(mesh.position.length());
+mesh.position.normalize(); //Normalize the position vector to make it a unit vector.
+console.log(mesh.position.length());
+console.log(mesh.position.distanceTo(camera.position));
+
+//Scale
+mesh.scale.x = 2;
+mesh.scale.y = 0.5;
+mesh.scale.z = 0.5;
+// mesh.scale.set(0,0,0)
+
+//Rotation
+mesh.rotation.reorder("YXZ"); //Set the order of rotation to YXZ. This means that the object will be rotated around the Y-axis first, then the X-axis, and finally the Z-axis. Do it before setting the rotation values.
+mesh.rotation.y = Math.PI;
+// mesh.rotation.y = Math.PI * 0.25; //Rotate the object by 180 degrees around the y-axis;
+mesh.rotation.x = Math.PI / 4;
+mesh.rotation.z = 0;
+// mesh.rotation.set(Math.PI / 4, Math.PI * 0.25, 0);
+
+//Combining Transformations - You can combine transformations by applying them in the order you want. For example, you can first scale the object, then rotate it, and finally translate it.
+
+//Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
+const axesHelper = new THREE.AxesHelper(2);
+scene.add(axesHelper);
+//LookAt - The lookAt method is used to make the camera look at a specific point in the scene. It takes a vector as input and makes the camera look at that point.
+camera.lookAt(mesh.position); //Make the camera look at the mesh position.
+//Scene Graph - The scene graph is a hierarchical representation of the objects in the scene. It defines the parent-child relationship between the objects in the scene. The scene graph is used to organize the objects in the scene and to apply transformations to them.
+
+const group = new THREE.Group();
+group.position.y = 0.5;
+group.scale.y = 1;
+group.rotation.y = 1;
+scene.add(group);
+const cube1 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: 0x463a00 })
+);
+const cube2 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: 0x00463a })
+);
+const cube3 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: 0x46003a })
+);
+group.add(cube1, cube2, cube3);
+cube2.position.set(1.5, 0, 0);
+cube3.position.set(-1.5, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
