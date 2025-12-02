@@ -57,7 +57,7 @@
 // renderer.setSize(sizes.width, sizes.height);
 
 // renderer.render(scene, camera);
-dfds;
+
 //Practice
 import * as THREE from "three";
 import gsap from "gsap";
