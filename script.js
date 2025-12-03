@@ -93,7 +93,7 @@ mesh.position.z = 0;
 
 //Methods
 // mesh.position.set(1, -0.5, -4);
-// console.log(mesh.position.length());
+// console.log(mesh.position.length()); //Get the length of the position vector from the origin (0,0,0) to the mesh position.
 // mesh.position.normalize(); //Normalize the position vector to make it a unit vector.
 // console.log(mesh.position.length());
 // console.log(mesh.position.distanceTo(camera.position));
