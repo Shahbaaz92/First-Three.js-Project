@@ -103,9 +103,9 @@ const axesHelper = new THREE.AxesHelper(3);
 scene.add(axesHelper);
 
 //Scale
-// mesh.scale.x = 2;
-// mesh.scale.y = 0.5;
-// mesh.scale.z = 0.5;
+mesh.scale.x = 2;
+mesh.scale.y = 0.5;
+mesh.scale.z = 0.5;
 // mesh.scale.set(0,0,0)
 
 //Rotation
