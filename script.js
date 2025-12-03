@@ -85,18 +85,22 @@ camera.position.z = 3;
 //Transformations are used to change the position, rotation, scale and quaternion of objects in the scene. Three.js provides methods to apply transformations to objects easily.
 
 //Position
-mesh.position.y = 0;
-mesh.position.x = 0;
-mesh.position.z = 0;
+mesh.position.y = 0; //upwards/downwards -
+mesh.position.x = 0; //sidewards
+mesh.position.z = 0; //forwards/backwards
 
 //Generally added before adding the mesh to the scene.
 
 //Methods
-// mesh.position.set(1, -0.5, -4);
+// mesh.position.set(1, -0.5, -4); //Set the position of the mesh to (1, -0.5, -4) where x=1, y=-0.5, z=-4.
 // console.log(mesh.position.length()); //Get the length of the position vector from the origin (0,0,0) to the mesh position.
 // mesh.position.normalize(); //Normalize the position vector to make it a unit vector.
 // console.log(mesh.position.length());
-// console.log(mesh.position.distanceTo(camera.position));
+// console.log(mesh.position.distanceTo(camera.position)); //Get the distance between the mesh position and the camera position.
+
+//Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
+const axesHelper = new THREE.AxesHelper(3);
+scene.add(axesHelper);
 
 //Scale
 // mesh.scale.x = 2;
@@ -113,10 +117,6 @@ mesh.position.z = 0;
 // mesh.rotation.set(Math.PI / 4, Math.PI * 0.25, 0);
 
 //Combining Transformations - You can combine transformations by applying them in the order you want. For example, you can first scale the object, then rotate it, and finally translate it.
-
-//Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
-// const axesHelper = new THREE.AxesHelper(2);
-// scene.add(axesHelper);
 
 //LookAt - The lookAt method is used to make the camera look at a specific point in the scene. It takes a vector as input and makes the camera look at that point.
 // camera.lookAt(mesh.position); //Make the camera look at the mesh position.
