@@ -127,26 +127,31 @@ camera.lookAt(mesh.position); //Make the camera look at the mesh position.
 //* Scene Graph - The scene graph is a hierarchical representation of the objects in the scene. It defines the parent-child relationship between the objects in the scene. The scene graph is used to organize the objects in the scene and to apply transformations to them.
 
 //TODO New Group
-// const group = new THREE.Group();
-// group.position.y = 1;
-// group.scale.y = 1;
-// group.rotation.y = 1;
-// scene.add(group);
-// const cube1 = new THREE.Mesh(
-//   new THREE.BoxGeometry(1, 1, 1),
-//   new THREE.MeshBasicMaterial({ color: 0x463a00 })
-// );
-// const cube2 = new THREE.Mesh(
-//   new THREE.BoxGeometry(1, 1, 1),
-//   new THREE.MeshBasicMaterial({ color: 0x00463a })
-// );
-// const cube3 = new THREE.Mesh(
-//   new THREE.BoxGeometry(1, 1, 1),
-//   new THREE.MeshBasicMaterial({ color: 0x46003a })
-// );
-// group.add(cube1, cube2, cube3);
-// cube2.position.set(1.5, 0, 0);
-// cube3.position.set(-1.5, 0, 0);
+
+/*
+ const group = new THREE.Group();
+ group.position.y = 1;
+ group.scale.y = 1;
+ group.rotation.y = 1;
+ scene.add(group);
+ const cube1 = new THREE.Mesh(
+   new THREE.BoxGeometry(1, 1, 1),
+   new THREE.MeshBasicMaterial({ color: 0x463a00 })
+ );
+ const cube2 = new THREE.Mesh(
+   new THREE.BoxGeometry(1, 1, 1),
+   new THREE.MeshBasicMaterial({ color: 0x00463a })
+ );
+ const cube3 = new THREE.Mesh(
+   new THREE.BoxGeometry(1, 1, 1),
+   new THREE.MeshBasicMaterial({ color: 0x46003a })
+ );
+ group.add(cube1, cube2, cube3);
+ cube2.position.set(1.5, 0, 0);
+ cube3.position.set(-1.5, 0, 0);
+*/
+
+//*Rendering
 
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -163,19 +168,20 @@ renderer.setSize(sizes.width, sizes.height);
 //The time variable is used to keep track of the time elapsed since the last frame. It is used to calculate the delta time, which is the time difference between the current frame and the previous frame. The delta time is used to update the position and rotation of the objects in the scene.
 // It is used to create smooth animations that are independent of the frame rate. The delta time is calculated by subtracting the current time from the previous time. The delta time is then used to update the position and rotation of the objects in the scene.
 
-// let time = Date.now();
+/* let time = Date.now();
 
-// const loop = () => {
-//  const currentTime = Date.now();
-//  const deltaTime = currentTime - time;
-//  time = currentTime;
+  const loop = () => {
+  const currentTime = Date.now();
+  const deltaTime = currentTime - time;
+  time = currentTime;
 
-//  mesh.position.x += 0.01;
-//  mesh.rotation.y += 0.01 * deltaTime;
+  mesh.position.x += 0.01;
+  mesh.rotation.y += 0.01 * deltaTime;
 
-//   renderer.render(scene, camera);
-//   window.requestAnimationFrame(loop);
-// };
+  renderer.render(scene, camera);
+  window.requestAnimationFrame(loop);
+ };
+*/
 
 //Animation control using Three.Clock()
 //The Three.Clock class is used to keep track of the time elapsed since the last frame. It is used to create smooth animations that are independent of the frame rate. The Three.Clock class provides methods to start, stop, and reset the clock. It also provides methods to get the elapsed time and delta time.
