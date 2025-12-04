@@ -5,7 +5,7 @@
 //It is a powerful library that allows you to create complex 3D scenes with ease. It is widely used in web development for creating 3D graphics and animations.
 
 //Import everything from three.js
-// import * as THREE from "three";
+//! import * as THREE from "three";
 
 //* CANAVAS
 //Canvas - A canvas is an HTML element that can be used to render graphics. It is a container for the 3D scene.
@@ -183,11 +183,14 @@ renderer.setSize(sizes.width, sizes.height);
 const clock = new THREE.Clock();
 const loop = () => {
   const elaspedTime = clock.getElapsedTime();
-  //Update;
+  //Update objects
   mesh.rotation.y = elaspedTime * Math.PI; //
   mesh.position.x = Math.sin(elaspedTime);
   mesh.position.y = Math.cos(elaspedTime);
+
+  //Render Object
   renderer.render(scene, camera);
+  //Call the loop again
   window.requestAnimationFrame(loop);
 };
 loop();
