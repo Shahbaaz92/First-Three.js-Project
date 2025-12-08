@@ -80,6 +80,15 @@ let camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
+// const aspectRatio = sizes.width / sizes.height;
+// camera = new THREE.OrthographicCamera(
+//   -1 * aspectRatio,
+//   1 * aspectRatio,
+//   1,
+//   -1,
+//   0.1,
+//   100
+// );
 scene.add(camera);
 camera.position.x = 0.5;
 camera.position.y = 0.5;
@@ -245,4 +254,4 @@ loop();
 // Orthographic Camera
 // This camera uses orthographic projection, where objects maintain their size regardless of their distance from the camera. It is often used in 2D games, architectural visualizations, and technical drawings where accurate measurements are essential.
 
-camera = new THREE.OrthographicCamera();
+// camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
