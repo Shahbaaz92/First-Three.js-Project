@@ -77,9 +77,7 @@ const sizes = {
 /**
  * Cursor
  */
-window.addEventListener("mousemove", (event) => {
-  console.log(event);
-});
+window.addEventListener("mousemove", (event) => {});
 
 let camera = new THREE.PerspectiveCamera(
   75,
