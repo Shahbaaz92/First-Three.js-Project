@@ -132,7 +132,7 @@ mesh.position.z = 0; // forwards/backwards
 
 // * Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
 const axesHelper = new THREE.AxesHelper(3);
-scene.add(axesHelper);
+// scene.add(axesHelper);
 
 // * Scale
 //  mesh.scale.x = 2;
