@@ -62,6 +62,7 @@
 import * as THREE from "three";
 import gsap from "gsap";
 const canvas = document.querySelector("canvas.webgl");
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; //can also be written as 'three/addons/controls/OrbitControls.js', depending on the three.js version i.e. r152 and above.
 
 const scene = new THREE.Scene();
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -77,7 +78,14 @@ const sizes = {
 /**
  * Cursor
  */
-window.addEventListener("mousemove", (event) => {});
+const cursor = {
+  x: 0,
+  y: 0,
+};
+window.addEventListener("mousemove", (event) => {
+  cursor.x = event.clientX / sizes.width - 0.5; // -0.5 to center the cursor
+  cursor.y = -(event.clientY / sizes.height - 0.5); // -0.5 to center the cursor and invert y axis
+});
 
 let camera = new THREE.PerspectiveCamera(
   75,
@@ -98,6 +106,11 @@ scene.add(camera);
 camera.position.x = 0.5;
 camera.position.y = 0.5;
 camera.position.z = 4;
+
+// * Controls
+
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; // Enable damping (inertia) for smoother controls
 
 // ! TRANSFORM OBJECTS
 
@@ -214,6 +227,16 @@ const loop = () => {
   mesh.position.x = Math.sin(elaspedTime);
   mesh.position.y = Math.cos(elaspedTime);
 
+  //Update camera
+  // camera.position.x = cursor.x * 10;
+  // camera.position.y = cursor.y * 10;
+  camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3;
+  camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3;
+  camera.position.y = cursor.y * 5;
+  camera.lookAt(mesh.position);
+
+  // Update the controls in the animation loop
+  controls.update();
   // Render Object
   renderer.render(scene, camera);
   // Call the loop again
@@ -260,3 +283,23 @@ loop();
 // This camera uses orthographic projection, where objects maintain their size regardless of their distance from the camera. It is often used in 2D games, architectural visualizations, and technical drawings where accurate measurements are essential.
 
 // camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
+// The parameters define the left, right, top, bottom, near, and far clipping planes of the camera's view frustum.
+
+//! Controls
+//OrbitControls - A control that allows the camera to orbit around a target. It is used to create a 3D view of the scene.
+//  import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+//  const controls = new OrbitControls(camera, canvas);
+//  controls.enableDamping = true; // Enable damping (inertia) for smoother controls
+//  controls.update(); // Update the controls in the animation loop
+
+//TrackballControls - A control that allows the camera to trackball around a target. It is used to create a 3D view of the scene.
+
+//FirstPersonControls - A control that allows the camera to move in first person view. It is used to create a first person view of the scene.
+
+//FlyControls - A control that allows the camera to fly around the scene. It is used to create a flying view of the scene.
+
+//PointerLockControls - A control that allows the camera to move in first person view using the mouse. It is used to create a first person view of the scene using the mouse.
+
+//TransformControls - A control that allows the user to transform objects in the scene. It is used to move, rotate, and scale objects in the scene.
+
+//DragControls - A control that allows the user to drag objects in the scene. It is used to move objects in the scene using the mouse.
