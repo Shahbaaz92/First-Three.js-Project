@@ -74,7 +74,12 @@ const sizes = {
   height: 650,
 };
 
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
+let camera = new THREE.PerspectiveCamera(
+  75,
+  sizes.width / sizes.height,
+  0.1,
+  100
+);
 scene.add(camera);
 camera.position.x = 0.5;
 camera.position.y = 0.5;
@@ -216,8 +221,8 @@ loop();
 
 //  loop();
 
-// CAMERAS - Extended
-// Camera
+//! CAMERAS - Extended
+//* Camera
 // Abstract base class for cameras. This class should always be inherited when you build a new camera.
 
 // Types of Cameras
@@ -228,12 +233,16 @@ loop();
 // 5. StereoCamera - A stereo camera is a camera that uses two cameras to create a 3D effect. It is used to create realistic 3D scenes and is often used in games and applications where a 3D view is required.
 
 // Perspective Camera
+//This camera simulates the way the human eye sees. Objects that are further away appear smaller, creating a sense of depth and realism in 3D scenes.
 
 //  const camera = new THREE.PerspectiveCamera(
 //    75, // Field of View
 //    sizes.width / sizes.height, // Aspect Ratio
-//    0.1, // Near
-//    1000 // Far
+//    0.1, // Near - objects closer than this distance will not be rendered
+//    1000 // Far - objects further than this distance will not be rendered
 //  );
 
 // Orthographic Camera
+// This camera uses orthographic projection, where objects maintain their size regardless of their distance from the camera. It is often used in 2D games, architectural visualizations, and technical drawings where accurate measurements are essential.
+
+camera = new THREE.OrthographicCamera();
