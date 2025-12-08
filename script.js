@@ -74,6 +74,13 @@ const sizes = {
   height: 650,
 };
 
+/**
+ * Cursor
+ */
+window.addEventListener("mousemove", (event) => {
+  console.log(event);
+});
+
 let camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
@@ -92,7 +99,7 @@ let camera = new THREE.PerspectiveCamera(
 scene.add(camera);
 camera.position.x = 0.5;
 camera.position.y = 0.5;
-camera.position.z = 3;
+camera.position.z = 4;
 
 // ! TRANSFORM OBJECTS
 
