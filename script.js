@@ -91,7 +91,7 @@ let camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 // const aspectRatio = sizes.width / sizes.height;
 // camera = new THREE.OrthographicCamera(
