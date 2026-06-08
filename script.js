@@ -54,12 +54,12 @@
 
 // * RENDERER
 //  Render - A renderer is a component that renders the scene and camera. It takes the scene and camera as input and outputs the rendered image to the screen. Renderer is always last step.
-//  const renderer = new THREE.WebGLRenderer({
-//    canvas: canvas,
-//  });
-//  renderer.setSize(sizes.width, sizes.height);
+//!  const renderer = new THREE.WebGLRenderer({
+//!    canvas: canvas,
+//!  });
+//!  renderer.setSize(sizes.width, sizes.height);
 
-//  renderer.render(scene, camera);
+//!  renderer.render(scene, camera);
 
 // TODO Practice
 import * as THREE from "three";
@@ -127,21 +127,21 @@ mesh.position.z = 0; // forwards/backwards
 // Generally added before adding the mesh to the scene.
 
 // * Position Methods
-//  mesh.position.set(1, -0.5, -4); // Set the position of the mesh to (1, -0.5, -4) where x=1, y=-0.5, z=-4.
-//  console.log(mesh.position.length()); // Get the length of the position vector from the origin (0,0,0) to the mesh position.
-//  mesh.position.normalize(); // Normalize the position vector to make it a unit vector.
+//!  mesh.position.set(1, -0.5, -4); // Set the position of the mesh to (1, -0.5, -4) where x=1, y=-0.5, z=-4.
+//!  console.log(mesh.position.length()); // Get the length of the position vector from the origin (0,0,0) to the mesh position.
+//!  mesh.position.normalize(); // Normalize the position vector to make it a unit vector.
 //  console.log(mesh.position.length());
-//  console.log(mesh.position.distanceTo(camera.position)); // Get the distance between the mesh position and the camera position.
+//!  console.log(mesh.position.distanceTo(camera.position)); // Get the distance between the mesh position and the camera position.
 
 // * Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
 const axesHelper = new THREE.AxesHelper(3);
-// scene.add(axesHelper);
+//! scene.add(axesHelper);
 
 // * Scale
-//  mesh.scale.x = 2;
-//  mesh.scale.y = 0.5;
-//  mesh.scale.z = 0.5;
-//  mesh.scale.set(0,0,0)
+//!  mesh.scale.x = 2;
+//!  mesh.scale.y = 0.5;
+//!  mesh.scale.z = 0.5;
+//!  mesh.scale.set(0,0,0)
 
 // * Rotation
 //  mesh.rotation.reorder("YXZ"); // Set the order of rotation to YXZ. This means that the object will be rotated around the Y-axis first, then the X-axis, and finally the Z-axis. Do it before setting the rotation values.
