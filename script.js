@@ -196,7 +196,7 @@ camera.lookAt(mesh.position); // Make the camera look at the mesh position.
  cube3.position.set(-1.5, 0, 0);
 */
 
-// *Rendering
+//* Rendering (Continued from above)
 
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -204,8 +204,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 //  renderer.render(scene, camera);
 
-// ! ANIMATION
-
+//! ANIMATION
 // Animation is the process of creating the illusion of motion by displaying a series of images or frames. In Three.js, animation is done using the requestAnimationFrame method, which is a built-in method in JavaScript that allows you to create smooth animations.
 // It is used to create a loop that updates the scene and renders it at a specific frame rate. The requestAnimationFrame method takes a callback function as input and calls it before the next repaint of the browser.
 
