@@ -5,49 +5,52 @@
 // It is a powerful library that allows you to create complex 3D scenes with ease. It is widely used in web development for creating 3D graphics and animations.
 
 // Import everything from three.js
-// ! import * as THREE from "three";
+//! import * as THREE from "three";
+//This will import all core classes of Three.js inside the THREE variable from the three dependency.
 
 // * CANAVAS
 // Canvas - A canvas is an HTML element that can be used to render graphics. It is a container for the 3D scene.
 //  The canvas element is used to create a drawing surface for the 3D scene. It is used to render the 3D graphics on the screen.
-//  const canvas = document.querySelector("canvas.webgl");
+//!  const canvas = document.querySelector("canvas.webgl");
+// from index.html, we are selecting the canvas element with the class "webgl" and storing it in a variable called canvas. This canvas will be used to render the 3D scene.
 
 // * SCENE
 // Scene - A scene is a container for all the objects in the 3D world. It is used to create a 3D environment where the objects can be rendered.
-//  const scene = new THREE.Scene();
+//!  const scene = new THREE.Scene();
 
 // * OBJECT
 // Object - An object in the scene is anything that has a position, rotation, and scale and can be rendered on the scene.
 
 // * GEOMETRY
 // Geometry - A geometry is a shape that can be rendered in the scene. It defines the shape of the object.
-//  const geometry = new THREE.BoxGeometry(1, 1, 1);
+//!  const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 // * MATERIAL
 // Material - A material is a surface that can be applied to a geometry. It defines how the object will look when rendered.
-//  const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+//!  const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
 
 // * MESH
 // Mesh - A mesh is a combination of geometry and material. It is the object that will be rendered in the scene.
-//  const mesh = new THREE.Mesh(geometry, material);
+//!  const mesh = new THREE.Mesh(geometry, material);
 
 // Add the mesh to the scene
-//  scene.add(mesh);
+//!  scene.add(mesh);
 
 // * SIZES
 //  Sizes - The sizes of the scene are the width and height of the viewport. It defines how the scene will be rendered on the screen.
-//  const sizes = {
-//    width: 800,
-//    height: 600,
-//  };
+//!  const sizes = {
+//!    width: 800,
+//!    height: 600,
+//!  };
 
 // *CAMERA
 //  Camera - A camera is a virtual camera that defines the view of the scene. It determines what will be visible in the scene.
-//  const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
-//  scene.add(camera);
-//  camera.position.z = 3; // Set the position of the camera
-//  camera.position.x = 1; // Set the position of the camera
-//  camera.position.y = 0.15; // Set the position of the camera
+// The aspect ratio is the width of the canvas divided by its height.
+//!  const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
+//!  scene.add(camera);
+//!  camera.position.z = 3; // Set the position of the camera
+//!  camera.position.x = 1; // Set the position of the camera
+//!  camera.position.y = 0.15; // Set the position of the camera
 
 // * RENDERER
 //  Render - A renderer is a component that renders the scene and camera. It takes the scene and camera as input and outputs the rendered image to the screen. Renderer is always last step.
