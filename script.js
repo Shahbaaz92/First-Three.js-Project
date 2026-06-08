@@ -8,42 +8,42 @@
 //! import * as THREE from "three";
 //This will import all core classes of Three.js inside the THREE variable from the three dependency.
 
-// * CANAVAS
+//* CANAVAS
 // Canvas - A canvas is an HTML element that can be used to render graphics. It is a container for the 3D scene.
 //  The canvas element is used to create a drawing surface for the 3D scene. It is used to render the 3D graphics on the screen.
 //!  const canvas = document.querySelector("canvas.webgl");
 // from index.html, we are selecting the canvas element with the class "webgl" and storing it in a variable called canvas. This canvas will be used to render the 3D scene.
 
-// * SCENE
+//* SCENE
 // Scene - A scene is a container for all the objects in the 3D world. It is used to create a 3D environment where the objects can be rendered.
 //!  const scene = new THREE.Scene();
 
-// * OBJECT
+//* OBJECT
 // Object - An object in the scene is anything that has a position, rotation, and scale and can be rendered on the scene.
 
-// * GEOMETRY
+//* GEOMETRY
 // Geometry - A geometry is a shape that can be rendered in the scene. It defines the shape of the object.
 //!  const geometry = new THREE.BoxGeometry(1, 1, 1);
 
-// * MATERIAL
+//* MATERIAL
 // Material - A material is a surface that can be applied to a geometry. It defines how the object will look when rendered.
 //!  const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
 
-// * MESH
+//* MESH
 // Mesh - A mesh is a combination of geometry and material. It is the object that will be rendered in the scene.
 //!  const mesh = new THREE.Mesh(geometry, material);
 
 // Add the mesh to the scene
 //!  scene.add(mesh);
 
-// * SIZES
+//* SIZES
 //  Sizes - The sizes of the scene are the width and height of the viewport. It defines how the scene will be rendered on the screen.
 //!  const sizes = {
 //!    width: 800,
 //!    height: 600,
 //!  };
 
-// *CAMERA
+//*CAMERA
 //  Camera - A camera is a virtual camera that defines the view of the scene. It determines what will be visible in the scene.
 // The aspect ratio is the width of the canvas divided by its height.
 //!  const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
@@ -52,7 +52,7 @@
 //!  camera.position.x = 1; // Set the position of the camera
 //!  camera.position.y = 0.15; // Set the position of the camera
 
-// * RENDERER
+//* RENDERER
 //  Render - A renderer is a component that renders the scene and camera. It takes the scene and camera as input and outputs the rendered image to the screen. Renderer is always last step.
 //!  const renderer = new THREE.WebGLRenderer({
 //!    canvas: canvas,
@@ -61,7 +61,7 @@
 
 //!  renderer.render(scene, camera);
 
-// TODO Practice
+//TODO  Practice
 import * as THREE from "three";
 import gsap from "gsap";
 const canvas = document.querySelector("canvas.webgl");
@@ -110,58 +110,68 @@ camera.position.x = 0.5;
 camera.position.y = 0.5;
 camera.position.z = 4;
 
-// * Controls
+//* Controls
 
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true; // Enable damping (inertia) for smoother controls
 
-// ! TRANSFORM OBJECTS
+//! TRANSFORM OBJECTS
 
 // Transformations are used to change the position, rotation, scale and quaternion of objects in the scene. Three.js provides methods to apply transformations to objects easily.
 
-// *Position
+//* Position
 mesh.position.y = 0; // upwards/downwards -
 mesh.position.x = 0; // sidewards
 mesh.position.z = 0; // forwards/backwards
 
 // Generally added before adding the mesh to the scene.
 
-// * Position Methods
+//* Position Methods
 //!  mesh.position.set(1, -0.5, -4); // Set the position of the mesh to (1, -0.5, -4) where x=1, y=-0.5, z=-4.
 //!  console.log(mesh.position.length()); // Get the length of the position vector from the origin (0,0,0) to the mesh position.
 //!  mesh.position.normalize(); // Normalize the position vector to make it a unit vector.
 //  console.log(mesh.position.length());
 //!  console.log(mesh.position.distanceTo(camera.position)); // Get the distance between the mesh position and the camera position.
 
-// * Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
+//* Axes Helper - An axis helper is a visual representation of the axes in the scene. It helps to visualize the orientation of the objects in the scene.
 const axesHelper = new THREE.AxesHelper(3);
 //! scene.add(axesHelper);
 
-// * Scale
+//* Scale
 //!  mesh.scale.x = 2;
 //!  mesh.scale.y = 0.5;
 //!  mesh.scale.z = 0.5;
 //!  mesh.scale.set(0,0,0)
 
-// * Rotation
-//  mesh.rotation.reorder("YXZ"); // Set the order of rotation to YXZ. This means that the object will be rotated around the Y-axis first, then the X-axis, and finally the Z-axis. Do it before setting the rotation values.
-//  mesh.rotation.y = Math.PI;
-//  mesh.rotation.y = Math.PI * 0.25; // Rotate the object by 180 degrees around the y-axis;
-//  mesh.rotation.x = Math.PI / 4;
-//  mesh.rotation.z = 0;
-//  mesh.rotation.set(Math.PI / 4, Math.PI * 0.25, 0);
+//* Rotation
+//!  mesh.rotation.x = 4;
+//!  mesh.rotation.z = 0;
+//!  mesh.rotation.y = Math.PI;
+//!  mesh.rotation.x = Math.PI / 4;
+//!  mesh.rotation.y = Math.PI * 0.25; // Rotate the object by 180 degrees around the y-axis;
+// Reordering rotation - The order of rotation is important when applying multiple rotations to an object. By default, the order of rotation is XYZ, which means that the object will be rotated around the X-axis first, then the Y-axis, and finally the Z-axis. You can change the order of rotation using the reorder method of the rotation property of the mesh. For example, if you want to rotate the object around the Y-axis first, then the X-axis, and finally the Z-axis, you can use the following code:
+//!  mesh.rotation.reorder("YXZ");
+//!  mesh.rotation.set(Math.PI / 4, Math.PI * 0.25, 0);
 
-// * Combining Transformations - You can combine transformations by applying them in the order you want. For example, you can first scale the object, then rotate it, and finally translate it.
+//* Quaternion
+// A quaternion is a mathematical representation of rotation that avoids gimbal lock and provides smooth interpolation between rotations. It is used to represent the orientation of objects in 3D space. Three.js provides a Quaternion class that can be used to create and manipulate quaternions. You can set the rotation of an object using quaternions by using the quaternion property of the mesh. For example, you can set the rotation of an object to 45 degrees around the Y-axis using the following code:
+//!  mesh.quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI / 4); // Rotate the object by 45 degrees around the Y-axis using quaternions.
 
-// * LookAt - The lookAt method is used to make the camera look at a specific point in the scene. It takes a vector as input and makes the camera look at that point.
+//* Combining Transformations - You can combine transformations by applying them in the order you want. For example, you can first scale the object, then rotate it, and finally translate it.
+//! mesh.scale.set(1.5, 1.5, 1.5);
+//! mesh.rotation.set(Math.PI / 4, Math.PI * 0.25, 0);
+//! mesh.position.set(0.5, 0.5, 0);
+
+//* LookAt - The lookAt method is used to make the camera look at a specific point in the scene. It takes a vector as input and makes the camera look at that point.
 
 camera.lookAt(mesh.position); // Make the camera look at the mesh position.
 
-// !GROUPING OBJECTS
+//! GROUPING OBJECTS
 
-// * Scene Graph - The scene graph is a hierarchical representation of the objects in the scene. It defines the parent-child relationship between the objects in the scene. The scene graph is used to organize the objects in the scene and to apply transformations to them.
+//* Scene Graph - The scene graph is a hierarchical representation of the objects in the scene. It defines the parent-child relationship between the objects in the scene.
+//* Group - A group is a container for objects in the scene. It is used to group objects together and to apply transformations to them. When you apply a transformation to a group, it will affect all the objects in the group. For example, if you want to move a group of objects together, you can create a group and add the objects to it. Then you can apply the transformation to the group, and all the objects in the group will be moved together.
 
-// TODO New Group
+//TODO  New Group
 
 /*
  const group = new THREE.Group();
